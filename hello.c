@@ -18,10 +18,14 @@
  *****************************************************************************/
 
 #include <linux/module.h>
+#include <linux/fs.h>
+
+dev_t dev_number;
 
 int init_module(void)
 {
-	printk("Hello World!\n");
+	printk("GIve dev number!\n");
+	alloc_chrdev_region(&dev_number, 0 ,1 "MY_DEV");
 	return 0;
 }
 
